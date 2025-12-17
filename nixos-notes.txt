@@ -1,0 +1,70 @@
+When you see this in a tutorial:
+
+{
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
+      inherit pkgs;
+    };
+  };
+}
+
+The start and end brackets are not literal - it means you have to put that in the main curly braces of your config.
+
+To apply edits to your config immediately:
+  sudo nixos-rebuild switch
+
+To apply edits to your config after reboot:
+  sudo nixos-rebuild boot
+
+To update your system, run:
+  sudo nix-channel --update
+  sudo nixos-rebuild boot
+
+
+To manage generations:
+  # For system generations, which are separate from home-manager generations:
+  du -sh /nix/store   # See how much your nix store is using
+  sudo nix-env -p /nix/var/nix/profiles/system --list-generations   # See how many generations there are
+  sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +10   #Delete all but the 10 most recent generations
+
+  # For home manager generations:
+  nix-env -p ~/.local/state/nix/profiles/home-manager --list-generations
+  nix-env -p ~/.local/state/nix/profiles/home-manager --delete-generations +10
+
+  sudo nix-collect-garbage    # Collect garbage for system generations
+  nix-collect-garbage    # Collect garbage for home manager generations
+
+
+Changing to Flakes:
+- Enabled flakes in configuration.nix
+- Ran sudo nixos-rebuild switch
+- Switched configuration.nix and new file flake.nix to flakes
+- Copied them over
+- git commit/push
+- sudo nixos-rebuild switch --flake /etc/nixos#surface-nixos
+- Git commit/push
+
+Editing configuration workflow:
+  sudo vim configuration.nix
+  sudo git add .
+  sudo git commit 'm "made change x"
+  sudo git push
+  sudo nixos-rebuild switch --flake /etc/nixos#surface-nixos
+
+Updating the system workflow:
+  sudo nix flake update
+  sudo git add .
+  sudo git commit -m "update flake.lock (system update)"
+  sudo git push
+  sudo nixos-rebuild switch --flake /etc/nixos#surface-nixos
+
+
+To run a program without fully installing it and adding it to your configuration.nix:
+nix-shell -p alsa-utils   #alsa-utils is a package that provides alsamixer
+# now you can run:
+alsamixer
+
+#alternatively, a one liner (but it has to re-install the package every time you run this):
+nix-shell -p alsa-utils --run alsamixer
+
+#An important note on flakes: You must 'git add' files for nixos rebuild to actually see them! It does not just straight up read files from the filesystem! They must be tracked by git
