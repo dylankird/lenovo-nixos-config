@@ -11,6 +11,12 @@
 # set up stm32cubeide
 # gaming mode script
 # transparent blur
+# make ctrl+shift+esc open resources
+# fix the print screen button
+# remap the copilot button
+# maybe remap the home, end, pg up, pg down buttons
+# fix the speakers
+# update the install instructions from your surface book 2
 
 
 { config, pkgs, inputs, ... }:
@@ -64,6 +70,14 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+  # My install on the lenovo did not give my user xdg directories
+  # Hopefully this fixes that
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
