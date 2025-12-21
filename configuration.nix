@@ -73,12 +73,10 @@
 
   # My install on the lenovo did not give my user xdg directories
   # Hopefully this fixes that
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-  };
-
-
+  xdg.userDirs.enable = true;
+  xdg.userDirs.createDirectories = true;
+ 
+ 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
