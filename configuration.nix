@@ -18,6 +18,8 @@
 # fix the speakers
 # update the install instructions from your surface book 2
 # fix the touchscreen
+# add lspci as well as other basic terminal programs and add gpu related tools like nvidia-smi
+
 
 
 { config, pkgs, inputs, ... }:
@@ -71,6 +73,40 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+# Modern NixOS uses hardware.graphics (was hardware.opengl before 24.11)
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # helpful for Steam/proton
+  };
+
+  services.xserver.videoDrivers = [
+    "modesetting"  # Intel iGPU side for PRIME
+    "nvidia"
+  ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+
+    # For newer GPUs you must choose open vs proprietary kernel modules.
+    # RTX 50-series/Blackwell requires the open kernel modules.
+    open = true;  # important for this generation :contentReference[oaicite:1]{index=1}
+
+    nvidiaSettings = true;
+
+    powerManagement = {
+      enable = true;
+      finegrained = true; # lets the dGPU fully power down when idle (when supported)
+    };
+
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; # gives you `nvidia-offload` :contentReference[oaicite:2]{index=2}
+
+      intelBusId = "PCI:0:2:0";   # <-- replace with yours
+      nvidiaBusId = "PCI:1:0:0";  # <-- replace with yours
+    };
+  };
 
  
   # Configure keymap in X11
