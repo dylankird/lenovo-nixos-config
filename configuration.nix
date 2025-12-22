@@ -18,7 +18,7 @@
 # fix the speakers
 # update the install instructions from your surface book 2
 # fix the touchscreen
-# add lspci as well as other basic terminal programs and add gpu related tools like nvidia-smi
+# add lspci as well as other basic terminal programs and add gpu related tools like 
 
 
 
@@ -189,6 +189,7 @@
 	# To enter: Run distrobox enter --root archlinux
   joycond-cemuhook # Make sure you run this as root
   usbutils
+  pciutils
   claude-code
   nmap
 
@@ -240,6 +241,7 @@
   alsa-utils
   alsa-tools
   pavucontrol
+  easyeffects
 
   # Supporting packages
   nautilus-python # Allows for integration with nautilus - for instance nextcloud

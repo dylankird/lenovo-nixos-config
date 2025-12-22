@@ -68,3 +68,15 @@ alsamixer
 nix-shell -p alsa-utils --run alsamixer
 
 #An important note on flakes: You must 'git add' files for nixos rebuild to actually see them! It does not just straight up read files from the filesystem! They must be tracked by git
+
+
+Lenovo laptop notes (this should probably be added to the readme eventually):
+I managed to get the NVIDIA card to work properly - this now allows for proper suspends. Hopefully suspends now actually save a fair amount of battery.
+
+You can run a program using the nvidia gpu using the following:
+nvidia-offload $command
+
+For instance:
+nvidia-offload glxgears
+
+You can check details of the graphics card with nvidia-smi
