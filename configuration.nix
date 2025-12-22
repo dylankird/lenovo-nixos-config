@@ -227,6 +227,7 @@
   gnomeExtensions.caffeine
   gnomeExtensions.tiling-assistant
   gnomeExtensions.battery-indicator-icon
+  gnomeExtensions.hide-top-bar
   ];
 
 
