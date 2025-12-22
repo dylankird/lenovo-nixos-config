@@ -17,6 +17,7 @@
 # maybe remap the home, end, pg up, pg down buttons
 # fix the speakers
 # update the install instructions from your surface book 2
+# fix the touchscreen
 
 
 { config, pkgs, inputs, ... }:
@@ -71,11 +72,6 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  # My install on the lenovo did not give my user xdg directories
-  # Hopefully this fixes that
-  xdg.userDirs.enable = true;
-  xdg.userDirs.createDirectories = true;
- 
  
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -243,6 +239,10 @@
     ];
 
     programs.bash.enable = true;
+
+  xdg.userDirs.enable = true;
+  xdg.userDirs.createDirectories = true;
+
 
   programs.firefox = {
     enable = true;
