@@ -20,6 +20,8 @@
 # fix the touchscreen
 # add lspci as well as other basic terminal programs and add gpu related tools like 
 # set up easyeffects: https://mynixos.com/home-manager/options/services.easyeffects
+# set up syncthing
+# find ssh config from old machine
 
 
 
