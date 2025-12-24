@@ -19,6 +19,7 @@
 # update the install instructions from your surface book 2
 # fix the touchscreen
 # add lspci as well as other basic terminal programs and add gpu related tools like 
+# set up easyeffects: https://mynixos.com/home-manager/options/services.easyeffects
 
 
 
@@ -150,6 +151,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+# Added this in hopes that it fixes easyeffects missing gtk file chooser
+programs.dconf.enable = true;
 
 
   # For my razer mouse:
