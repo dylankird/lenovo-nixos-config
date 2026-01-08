@@ -67,7 +67,9 @@
     LC_NUMERIC = "en_US.UTF-8";
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    #LC_TIME = "en_US.UTF-8";
+    # Set the date/time format locale to Ireland to get Monday as the first day of the week
+    LC_TIME="en_IE.UTF-8"
   };
 
   # Enable the X11 windowing system.
@@ -259,11 +261,9 @@ programs.dconf.enable = true;
   gnomeExtensions.hot-edge
   gnomeExtensions.gsconnect
   gnomeExtensions.astra-monitor
-
   gnomeExtensions.night-theme-switcher
   # Use gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3" to switch to light
   # Use gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark" to switch to dark
-
   gnomeExtensions.adw-gtk3-colorizer
   gnomeExtensions.grand-theft-focus
   gnomeExtensions.light-style
@@ -273,6 +273,7 @@ programs.dconf.enable = true;
   gnomeExtensions.battery-indicator-icon
   gnomeExtensions.battery-time-2
   gnomeExtensions.hide-top-bar
+  gnomeExtensions.shaderpaper-gnome
   ];
 
 
