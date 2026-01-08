@@ -69,7 +69,7 @@
     LC_TELEPHONE = "en_US.UTF-8";
     #LC_TIME = "en_US.UTF-8";
     # Set the date/time format locale to Ireland to get Monday as the first day of the week
-    LC_TIME="en_IE.UTF-8"
+    LC_TIME="en_IE.UTF-8";
   };
 
   # Enable the X11 windowing system.
