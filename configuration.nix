@@ -274,7 +274,19 @@ programs.dconf.enable = true;
   gnomeExtensions.battery-time-2
   gnomeExtensions.hide-top-bar
   gnomeExtensions.shaderpaper-gnome
+
+  # These packages are for the shaderpaper extension:
+  gtksourceview5
+  gtksourceview4
   ];
+
+  # For the shaderpaper extension:
+  environment.sessionVariables.GI_TYPELIB_PATH =
+    lib.makeSearchPath "lib/girepository-1.0" [
+      pkgs.gtksourceview5
+      pkgs.gtksourceview4
+    ];
+
 
 
   # Enable input-remapper (not necessary on laptop)
