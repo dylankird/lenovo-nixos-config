@@ -25,7 +25,7 @@
 
 
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
@@ -146,7 +146,7 @@
   users.users.dylan = {
     isNormalUser = true;
     description = "Dylan Kirdahy";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -273,7 +273,7 @@ programs.dconf.enable = true;
   gnomeExtensions.battery-indicator-icon
   gnomeExtensions.battery-time-2
   gnomeExtensions.hide-top-bar
-  gnomeExtensions.shaderpaper-gnome
+  #gnomeExtensions.shaderpaper-gnome
 
   # These packages are for the shaderpaper extension:
   gtksourceview5
