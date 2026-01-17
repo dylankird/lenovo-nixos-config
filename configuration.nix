@@ -22,6 +22,7 @@
 # set up easyeffects: https://mynixos.com/home-manager/options/services.easyeffects
 # set up syncthing
 # find ssh config from old machine
+# Lower scroll speed for touchpad
 
 
 
@@ -200,6 +201,7 @@ programs.dconf.enable = true;
   pciutils
   claude-code
   nmap
+  python3
 
   # GUI programs	
   thunderbird
@@ -237,6 +239,7 @@ programs.dconf.enable = true;
   dolphin-emu
   razergenie
   vscode-fhs
+  rpi-imager
 
   # Gaming
   # sm64ex
@@ -273,7 +276,7 @@ programs.dconf.enable = true;
   gnomeExtensions.battery-indicator-icon
   gnomeExtensions.battery-time-2
   gnomeExtensions.hide-top-bar
-  #gnomeExtensions.shaderpaper-gnome
+  gnomeExtensions.shaderpaper-gnome
 
   # These packages are for the shaderpaper extension:
   gtksourceview5
@@ -421,7 +424,14 @@ dconf.settings = {
 # Added this to try to get the switch2 pro controller working
 hardware.steam-hardware.enable = true;
 services.udev.extraRules = ''
-SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2073", MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="057e", ATTR{idProduct}=="2066", MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="057e", ATTR{idProduct}=="2067", MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="057e", ATTR{idProduct}=="2069", MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="057e", ATTR{idProduct}=="2073", MODE="0666"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2066", MODE="0666"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2067", MODE="0666"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2069", MODE="0666"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2073", MODE="0666"
   '';
 
 
