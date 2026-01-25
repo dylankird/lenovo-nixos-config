@@ -240,6 +240,7 @@ programs.dconf.enable = true;
   razergenie
   vscode-fhs
   rpi-imager
+  gnome-decoder
 
   # Gaming
   # sm64ex
