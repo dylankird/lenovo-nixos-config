@@ -202,6 +202,7 @@ programs.dconf.enable = true;
   claude-code
   nmap
   python3
+  lm_sensors
 
   # GUI programs	
   thunderbird
