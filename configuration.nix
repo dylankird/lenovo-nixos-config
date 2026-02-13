@@ -203,6 +203,11 @@ programs.dconf.enable = true;
   python3
   lm_sensors
 
+  # Vim with vimrc applied:
+  (vim-full.customize {
+    vimrcConfig.customRC = builtins.readFile ./vimrc;
+  })
+
   # GUI programs	
   thunderbird
   signal-desktop
@@ -291,16 +296,6 @@ programs.dconf.enable = true;
       pkgs.gtksourceview5
       pkgs.gtksourceview4
     ];
-
-# Add vimrc
-programs.vim = {
-  enable = true;
-  defaultEditor = true;  # optional, sets $EDITOR
-  configure = {
-    customRC = builtins.readFile ./vimrc;
-  };
-};
-
   # Enable input-remapper (not necessary on laptop)
   #services.input-remapper.enable = true;
 	# Mapped the Pause/Break key on keyboard (Barcode Scanner) to KEY_PLAYPAUSE
