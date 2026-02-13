@@ -185,7 +185,6 @@ programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
 
   # Terminal programs
-  vim
   btop
   git
   syncthing
@@ -286,13 +285,21 @@ programs.dconf.enable = true;
   ];
 
   # For the shaderpaper extension:
+  # Sometimes in NixOS you have to allow certain programs to see libraries and other packages
   environment.sessionVariables.GI_TYPELIB_PATH =
     lib.makeSearchPath "lib/girepository-1.0" [
       pkgs.gtksourceview5
       pkgs.gtksourceview4
     ];
 
-
+# Add vimrc
+programs.vim = {
+  enable = true;
+  defaultEditor = true;  # optional, sets $EDITOR
+  configure = {
+    customRC = builtins.readFile ./vimrc;
+  };
+};
 
   # Enable input-remapper (not necessary on laptop)
   #services.input-remapper.enable = true;
