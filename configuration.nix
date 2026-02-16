@@ -51,6 +51,10 @@
 
   # Resume device for hibernation
   boot.resumeDevice = "/dev/disk/by-label/NIXROOT";
+  boot.kernelParams = [
+    "resume_offset=109733888"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"  # Helps NVIDIA survive hibernation
+  ];
 
   networking.hostName = "lenovo-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
