@@ -49,8 +49,8 @@
     size = 34 * 1024;  # 34GB in MB
   }];
 
-  # Resume device for hibernation
-  boot.resumeDevice = "/dev/disk/by-label/NIXROOT";
+  # Resume device for hibernation (must be the device-mapper path since we're using LVM)
+  boot.resumeDevice = "/dev/mapper/vg0-root";
   boot.kernelParams = [
     "resume_offset=109733888"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"  # Helps NVIDIA survive hibernation
