@@ -21,8 +21,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          ./hardware-configuration.nix
-          
+          # hardware-configuration.nix is imported by configuration.nix
+
           # nixos-hardware.nixosModules.microsoft-surface-common
           
           home-manager.nixosModules.home-manager

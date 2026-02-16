@@ -329,59 +329,48 @@ programs.dconf.enable = true;
 
 
 
-  # Switch Caps Lock and escape keys
-dconf.settings = {
+  # All dconf settings merged into a single block
+  dconf.settings = {
+    # Swap Caps Lock and Escape
     "org/gnome/desktop/input-sources" = {
-      # Swap Caps Lock and Escape
       xkb-options = [ "caps:swapescape" ];
     };
-  };
 
-  # Add keyboard shortcut for terminal
-dconf.settings = {
-    # Register the custom keybinding path
+    # Custom keybindings
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-kgx/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-firefox/"
       ];
-
-      # (Optional) clear any distro default for "terminal" to avoid conflicts
       terminal = [ ];
     };
 
-    # Define the binding itself
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-kgx" = {
       name = "Open Terminal (kgx)";
-      command = "kgx";              # or "kgx --new-window"
-      binding = "<Primary><Alt>t";  # Ctrl+Alt+T
+      command = "kgx";
+      binding = "<Primary><Alt>t";
     };
 
-	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-firefox" = {
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-firefox" = {
       name = "Open Firefox";
-      command = "firefox";                # Flatpak? use: "flatpak run org.mozilla.firefox"
-      binding = "<Primary><Alt>f";        # Ctrl+Alt+F
+      command = "firefox";
+      binding = "<Primary><Alt>f";
     };
-  };
 
-  # Add proper fractional scaling
-  dconf.settings = {
+    # Mutter/Wayland features
     "org/gnome/mutter" = {
-      # Enables Wayland fractional scaling in Displays (125%, 150%, 175%…)
-      # and keeps XWayland apps sharp under fractional scales.
       experimental-features = [
-        # Let's see how regular scaling works first
+        # Uncomment for fractional scaling support:
         #"scale-monitor-framebuffer"
         #"xwayland-native-scaling"
         "variable-refresh-rate"
       ];
     };
 
-	"org/gnome/desktop/wm/keybindings" = {
-      # Disable the app-level switcher
+    # Alt-Tab switches windows instead of apps
+    "org/gnome/desktop/wm/keybindings" = {
       "switch-applications" = [ ];
       "switch-applications-backward" = [ ];
-
-      # Make Alt-Tab switch windows instead
       "switch-windows" = [ "<Alt>Tab" ];
       "switch-windows-backward" = [ "<Shift><Alt>Tab" ];
     };
