@@ -43,6 +43,15 @@
   # Use latest kernel - disabled because this could break things on a stable release
   #boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Swap file for hibernation (must be >= RAM size)
+  swapDevices = [{
+    device = "/swapfile";
+    size = 34 * 1024;  # 34GB in MB
+  }];
+
+  # Resume device for hibernation
+  boot.resumeDevice = "/dev/disk/by-label/NIXROOT";
+
   networking.hostName = "lenovo-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
