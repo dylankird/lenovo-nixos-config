@@ -36,8 +36,16 @@
   # Add flakes:
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 90d";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 20;  # 2GB boot partition can handle ~20 generations
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel - disabled because this could break things on a stable release
@@ -295,6 +303,7 @@ programs.dconf.enable = true;
   gnomeExtensions.battery-indicator-icon
   gnomeExtensions.battery-time-2
   gnomeExtensions.hide-top-bar
+  gnomeExtensions.hibernate-status-button
   gnomeExtensions.shaderpaper-gnome
 
   # These packages are for the shaderpaper extension:

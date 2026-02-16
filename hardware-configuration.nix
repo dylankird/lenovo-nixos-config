@@ -28,7 +28,7 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-label/NIXHOME";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@home" "compress=zstd" "noatime" ];
     };
 
   swapDevices = [ ];
