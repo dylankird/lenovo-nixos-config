@@ -107,10 +107,7 @@
     enable32Bit = true; # helpful for Steam/proton
   };
 
-  services.xserver.videoDrivers = [
-    "modesetting"  # Intel iGPU side for PRIME
-    "nvidia"
-  ];
+  services.xserver.videoDrivers = [ "nvidia" ];  # Intel iGPU uses modesetting by default
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -186,6 +183,9 @@ programs.dconf.enable = true;
   hardware.openrazer.enable = true;
   hardware.openrazer.users = ["dylan"];
 
+  # Nintendo controller support (for joycond-cemuhook package)
+  services.joycond.enable = true;
+
   # Stuff for KVM so I can used GNOME boxes
   programs.virt-manager.enable = true;
 
@@ -209,7 +209,7 @@ programs.dconf.enable = true;
   btop
   git
   syncthing
-  neofetch
+  fastfetch
   appimage-run # appimage-run program-name.appimage
   steam-run # steam-run ./program-name.appimage
   distrobox 
