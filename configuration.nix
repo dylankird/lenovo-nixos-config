@@ -120,7 +120,7 @@
 
     powerManagement = {
       enable = true;
-      finegrained = true; # lets the dGPU fully power down when idle (when supported)
+      finegrained = false; # disabled for troubleshooting post-resume screen blanking
     };
 
     prime = {
