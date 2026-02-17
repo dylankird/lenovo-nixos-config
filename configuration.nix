@@ -62,7 +62,6 @@
   boot.kernelParams = [
     "resume_offset=109733888"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"  # Helps NVIDIA survive hibernation
-    "i915.enable_psr=0"  # Disable Panel Self Refresh - fixes post-resume screen blanking on Meteor Lake
   ];
 
   networking.hostName = "lenovo-nixos"; # Define your hostname.
